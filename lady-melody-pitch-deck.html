@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lady Melody — Proposition Gouditech</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 50%, #f5f3ff 100%);
+            padding: 20px;
+            color: #1f2937;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .slide {
+            background: white;
+            border-radius: 20px;
+            padding: 60px 50px;
+            margin-bottom: 40px;
+            box-shadow: 0 8px 40px rgba(212, 69, 106, 0.08);
+            min-height: 580px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #d4456a, #e86a8e, #f0a0b8);
+        }
+
+        .logo-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo-container img {
+            max-width: 280px;
+            height: auto;
+            border-radius: 12px;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 44px;
+            color: #d4456a;
+            margin-bottom: 15px;
+            text-align: center;
+            letter-spacing: -0.5px;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            color: #1f2937;
+            margin-bottom: 35px;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 20px;
+            color: #d4456a;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .subtitle {
+            font-size: 22px;
+            color: #6b7280;
+            text-align: center;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+
+        .tagline {
+            font-size: 16px;
+            color: #9ca3af;
+            text-align: center;
+            margin-top: 25px;
+            font-style: italic;
+        }
+
+        ul { list-style: none; }
+
+        li {
+            font-size: 17px;
+            color: #374151;
+            margin-bottom: 18px;
+            padding-left: 28px;
+            position: relative;
+            line-height: 1.7;
+        }
+
+        li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #d4456a, #e86a8e);
+        }
+
+        /* Before / After comparison */
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .before-box, .after-box {
+            padding: 25px;
+            border-radius: 12px;
+        }
+
+        .before-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+        }
+
+        .after-box {
+            background: #d1fae5;
+            border-left: 4px solid #10b981;
+        }
+
+        .before-box h3 { color: #92400e; }
+        .after-box h3 { color: #065f46; }
+
+        .before-box li::before { background: #f59e0b; }
+        .after-box li::before { background: #10b981; }
+
+        /* Chat simulation */
+        .chat-container {
+            background: #f9fafb;
+            border-radius: 16px;
+            padding: 30px;
+            margin: 25px 0;
+            border: 1px solid #e5e7eb;
+        }
+
+        .chat-header {
+            text-align: center;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e5e7eb;
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: #6b7280;
+        }
+
+        .bubble {
+            max-width: 80%;
+            padding: 12px 18px;
+            border-radius: 18px;
+            margin-bottom: 12px;
+            font-size: 15px;
+            line-height: 1.6;
+            clear: both;
+        }
+
+        .bubble-client {
+            background: #e5e7eb;
+            color: #1f2937;
+            float: left;
+            border-bottom-left-radius: 4px;
+        }
+
+        .bubble-agent {
+            background: linear-gradient(135deg, #d4456a, #e86a8e);
+            color: white;
+            float: right;
+            border-bottom-right-radius: 4px;
+        }
+
+        .clearfix { clear: both; }
+
+        /* Pricing */
+        .pricing-card {
+            background: linear-gradient(135deg, #d4456a 0%, #c2185b 100%);
+            color: white;
+            border-radius: 16px;
+            padding: 45px;
+            text-align: center;
+            margin: 30px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+        }
+
+        .price-tag {
+            font-family: 'Playfair Display', serif;
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .price-sub {
+            font-size: 18px;
+            opacity: 0.85;
+            margin-bottom: 30px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .feature-item {
+            font-size: 15px;
+            padding: 8px 0;
+            opacity: 0.95;
+        }
+
+        .feature-item::before {
+            content: "✓ ";
+            font-weight: 700;
+        }
+
+        /* ROI */
+        .roi-box {
+            background: #f0fdf4;
+            border: 2px solid #10b981;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+            text-align: center;
+        }
+
+        .roi-title {
+            font-size: 16px;
+            color: #065f46;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .roi-calc {
+            font-size: 20px;
+            color: #047857;
+            font-weight: 600;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            margin: 20px 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            align-items: flex-start;
+        }
+
+        .timeline-dot {
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #d4456a, #e86a8e);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .timeline-content h4 {
+            font-size: 17px;
+            color: #1f2937;
+            margin-bottom: 5px;
+        }
+
+        .timeline-content p {
+            font-size: 15px;
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        /* CTA */
+        .cta-box {
+            background: linear-gradient(135deg, #fdf2f8, #fce7f3);
+            border: 2px solid #d4456a;
+            border-radius: 16px;
+            padding: 35px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .cta-box p {
+            font-size: 18px;
+            color: #1f2937;
+            margin-bottom: 15px;
+        }
+
+        .cta-contact {
+            font-size: 22px;
+            color: #d4456a;
+            font-weight: 600;
+        }
+
+        .slide-number {
+            position: absolute;
+            bottom: 20px;
+            right: 30px;
+            font-size: 13px;
+            color: #d1d5db;
+            font-weight: 500;
+        }
+
+        .highlight {
+            background: linear-gradient(transparent 60%, #fce7f3 60%);
+            padding: 0 4px;
+        }
+
+        .stat-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 25px 15px;
+            background: #fdf2f8;
+            border-radius: 12px;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            color: #d4456a;
+            font-weight: 700;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #6b7280;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 600px) {
+            .slide { padding: 35px 25px; min-height: auto; }
+            h1 { font-size: 32px; }
+            h2 { font-size: 24px; }
+            .comparison { grid-template-columns: 1fr; }
+            .features-grid { grid-template-columns: 1fr; }
+            .stat-row { grid-template-columns: 1fr; }
+            .bubble { max-width: 90%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- SLIDE 1: COVER -->
+        <div class="slide">
+            <div class="logo-container">
+                <img src="https://thumbs.agenda.ch/uploads/logos/11381/original/Lady_Melody_pos_RVB.jpg?1706540225" alt="Lady Melody Logo">
+            </div>
+            <h1>Lady Melody</h1>
+            <div class="subtitle">Plus de clients. Moins de travail. 24h/24.</div>
+            <p class="tagline">Une proposition sur mesure pour automatiser vos réservations et développer votre clientèle</p>
+            <div style="text-align: center; margin-top: 50px; color: #9ca3af; font-size: 14px;">
+                <strong style="color: #6b7280;">Présenté par Gouditech</strong><br>
+                Étagnières — Mars 2026
+            </div>
+            <span class="slide-number">1/6</span>
+        </div>
+
+        <!-- SLIDE 2: LE PROBLÈME -->
+        <div class="slide">
+            <h2>😔 Ce qui vous coûte du temps (et des clients)</h2>
+
+            <div class="comparison">
+                <div class="before-box">
+                    <h3>⚠️ Aujourd'hui</h3>
+                    <ul>
+                        <li>Messages WhatsApp à 22h → pas de réponse → client perdu</li>
+                        <li>"C'est combien le laser?" pour la 10ème fois</li>
+                        <li>Clients qui oublient de revenir après la 1ère séance</li>
+                        <li>Peu de visibilité sur Google Maps</li>
+                    </ul>
+                </div>
+                <div class="after-box">
+                    <h3>✨ Avec notre solution</h3>
+                    <ul>
+                        <li>Chaque message reçoit une réponse instantanée, même à 3h du matin</li>
+                        <li>Un assistant intelligent répond à toutes les questions</li>
+                        <li>Rappels automatiques pour les prochaines séances</li>
+                        <li>Votre salon apparaît en tête de Google</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="stat-row">
+                <div class="stat-card">
+                    <div class="stat-number">60%</div>
+                    <div class="stat-label">des clients abandonnent s'ils n'ont pas de réponse en 1h</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">votre assistant répond même le dimanche et la nuit</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">+40%</div>
+                    <div class="stat-label">de réservations en moyenne avec un chat automatisé</div>
+                </div>
+            </div>
+            <span class="slide-number">2/6</span>
+        </div>
+
+        <!-- SLIDE 3: LA SOLUTION -->
+        <div class="slide">
+            <h2>💡 Comment ça marche?</h2>
+
+            <p style="text-align: center; color: #6b7280; margin-bottom: 35px; font-size: 17px;">
+                On installe un <span class="highlight">assistant intelligent</span> sur votre WhatsApp ou site web.<br>Il fait le travail d'une secrétaire, mais sans salaire et sans pause.
+            </p>
+
+            <ul>
+                <li><strong>Conseiller beauté virtuel</strong> — Explique vos services (laser, cire, maquillage), les prix, les avantages. Le client arrive déjà convaincu.</li>
+                <li><strong>Prise de rendez-vous automatique</strong> — L'assistant regarde votre calendrier, propose des créneaux libres, confirme le RDV. Vous recevez juste une notification.</li>
+                <li><strong>Rappels et fidélisation</strong> — "Ça fait 6 semaines, c'est le moment de votre prochaine séance!" Vos clients reviennent naturellement.</li>
+                <li><strong>Collecte d'avis</strong> — Après chaque visite, l'assistant demande un avis Google. Plus d'avis = plus de confiance = plus de clients.</li>
+                <li><strong>Visibilité améliorée</strong> — On optimise votre présence sur Google Maps, Instagram et les annonces locales.</li>
+            </ul>
+            <span class="slide-number">3/6</span>
+        </div>
+
+        <!-- SLIDE 4: DÉMONSTRATION -->
+        <div class="slide">
+            <h2>💬 Voilà ce que vos clients verront</h2>
+
+            <div class="chat-container">
+                <div class="chat-header">💅 Chat Lady Melody — WhatsApp</div>
+
+                <div class="bubble bubble-client">Bonjour! C'est quoi exactement l'épilation laser?</div>
+                <div class="clearfix"></div>
+
+                <div class="bubble bubble-agent">Bonjour! 😊 L'épilation laser utilise une lumière qui détruit le poil à la racine. Résultat: une peau lisse pendant 6 à 12 mois. C'est idéal pour les jambes, aisselles et maillot. Vous aimeriez essayer?</div>
+                <div class="clearfix"></div>
+
+                <div class="bubble bubble-client">Oui! C'est combien pour les jambes?</div>
+                <div class="clearfix"></div>
+
+                <div class="bubble bubble-agent">L'épilation laser jambes complètes: CHF 85 la séance (environ 1h). 💡 Astuce: le forfait 6 séances à CHF 408 vous fait économiser 20%! Vous souhaitez réserver?</div>
+                <div class="clearfix"></div>
+
+                <div class="bubble bubble-client">Oui, plutôt samedi matin</div>
+                <div class="clearfix"></div>
+
+                <div class="bubble bubble-agent">Parfait! Voici les créneaux disponibles:<br>📅 Samedi 15 mars — 10h00<br>📅 Samedi 15 mars — 11h30<br>Lequel vous convient?</div>
+                <div class="clearfix"></div>
+
+                <div class="bubble bubble-client">Samedi 10h!</div>
+                <div class="clearfix"></div>
+
+                <div class="bubble bubble-agent">C'est confirmé! ✅<br><br>📍 Lady Melody, Rte de Lausanne 14, Étagnières<br>📅 Samedi 15 mars à 10h00<br>💅 Épilation laser jambes (1h)<br>🅿️ Parking n°9 à disposition<br><br>Vous recevrez un rappel la veille. À samedi! 😊</div>
+                <div class="clearfix"></div>
+            </div>
+
+            <p style="text-align: center; color: #6b7280; font-style: italic; font-size: 15px; margin-top: 15px;">
+                <strong>Pour vous, Melody:</strong> vous recevez simplement une notification<br>"Nouveau RDV: Clara, laser jambes, samedi 10h". C'est tout.
+            </p>
+            <span class="slide-number">4/6</span>
+        </div>
+
+        <!-- SLIDE 5: TARIF -->
+        <div class="slide">
+            <h2>💎 Investissement</h2>
+
+            <div class="pricing-card">
+                <div class="price-tag">700 CHF</div>
+                <div class="price-sub">par mois · engagement 3 mois</div>
+                <div class="features-grid">
+                    <div class="feature-item">Assistant beauté 24/7 (WhatsApp)</div>
+                    <div class="feature-item">Prise de RDV automatique</div>
+                    <div class="feature-item">Visibilité Google Maps</div>
+                    <div class="feature-item">Stratégie Instagram</div>
+                    <div class="feature-item">Rappels clients automatiques</div>
+                    <div class="feature-item">Collecte d'avis Google</div>
+                    <div class="feature-item">Rapport mensuel de résultats</div>
+                    <div class="feature-item">Support technique inclus</div>
+                </div>
+            </div>
+
+            <div class="roi-box">
+                <div class="roi-title">📊 Retour sur investissement</div>
+                <div class="roi-calc">
+                    5 nouveaux clients/mois × CHF 85 = <strong>CHF 425 de revenus supplémentaires</strong><br>
+                    <span style="font-size: 16px; color: #6b7280; font-weight: 400;">+ les clients qui reviennent grâce aux rappels automatiques<br>+ le temps gagné (plus besoin de répondre aux mêmes questions)</span>
+                </div>
+            </div>
+
+            <p style="text-align: center; color: #6b7280; font-size: 15px;">
+                💡 <strong>Le premier mois est offert</strong> pour que vous puissiez voir les résultats avant de vous engager.
+            </p>
+            <span class="slide-number">5/6</span>
+        </div>
+
+        <!-- SLIDE 6: PLANNING -->
+        <div class="slide">
+            <h2>🗓️ Comment on démarre?</h2>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot">1</div>
+                    <div class="timeline-content">
+                        <h4>On se rencontre (15 minutes)</h4>
+                        <p>Un appel rapide pour comprendre vos besoins: vos horaires, vos tarifs, les questions que vos clients posent le plus souvent.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot">2</div>
+                    <div class="timeline-content">
+                        <h4>On prépare tout (semaines 1-2)</h4>
+                        <p>On crée votre assistant intelligent, on optimise votre Google Maps, et on prépare du contenu Instagram. Vous n'avez rien à faire.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot">3</div>
+                    <div class="timeline-content">
+                        <h4>On teste ensemble (semaine 2-3)</h4>
+                        <p>Vous essayez l'assistant, vous vérifiez que les réponses sont bonnes. On ajuste si besoin.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot">4</div>
+                    <div class="timeline-content">
+                        <h4>C'est parti! (semaine 3+)</h4>
+                        <p>L'assistant est en ligne. Vos clients l'utilisent. Vous recevez des réservations automatiquement. On mesure les résultats chaque mois.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cta-box">
+                <p>Envie d'essayer? On en discute?</p>
+                <div class="cta-contact">
+                    Goudi · Gouditech<br>
+                    <span style="font-size: 16px; font-weight: 400;">📱 [Votre numéro] · 💬 WhatsApp/Telegram</span>
+                </div>
+                <p style="font-size: 14px; color: #9ca3af; margin-top: 15px;">Premier mois offert · Sans engagement après 3 mois · Résultats mesurables</p>
+            </div>
+            <span class="slide-number">6/6</span>
+        </div>
+
+    </div>
+</body>
+</html>
